@@ -34,6 +34,14 @@ Options:
 ````
 this scripts just run linux cmds in background for changing current mac address so this script works only on linux
 
+[FAQ]
+ if use python2 to run this script `subprocess.check_output` is not defined in python2 , then install python3 `sudo apt install python3` 
+ ```
+File "mac_changer.py", line 29, in get_mac_address
+    ifconfig_result =  str(subprocess.check_output(["ifconfig",options.interface]),'ascii')
+
+```
+
 ---
 
 
