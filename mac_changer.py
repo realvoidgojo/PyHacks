@@ -8,7 +8,8 @@ def get_Options():
     parser.add_option("-i" , "--interface" , dest="interface" , help="Used to select Interface for changing MAC address")
     parser.add_option("-m" , "--mac" , dest= "new_mac" , help="Used to select New MAC address")
     ( options , arguments )  = parser.parse_args()
-
+    
+    # Excecption Handling for args
     if not options.interface:
         parser.error("Please specify an interface!, use --help or -h to get more info.")
     elif not options.new_mac:
@@ -18,9 +19,8 @@ def get_Options():
 
 # Changing MAC Address 
 def change_Mac(interface,new_mac):
-    print("\n[+] Changing MAC address :\t" + interface + "\tTo\u00A0\u00A0"+ new_mac + "\n" )
+    print("\n[+] Changing MAC address :\u00A0\u00A0" + interface + "\u00A0To\u00A0\u00A0"+ new_mac + "\n" )
     subprocess.run(["ifconfig",interface,"down"])  
-    
     subprocess.run(["ifconfig",interface,"hw","ether",new_mac]) 
     subprocess.run(["ifconfig",interface,"up"])
 
@@ -34,17 +34,18 @@ def get_mac_address(interface):
         print("MAC Address Not Found !!.")
 
 
-options = get_Options() 
+options = get_Options()
+mac_address_filter_result = get_mac_address(options.interface)
+print("-----------------------------------------------------------------------------------------")
+print("Current MAC address =",str(mac_address_filter_result))
 change_Mac(options.interface,options.new_mac) 
 mac_address_filter_result = get_mac_address(options.interface)
-print("Current MAC address =",str(mac_address_filter_result))
-
-
 
 if mac_address_filter_result == get_mac_address(options.interface):
-    print("MAC addres changed To :",mac_address_filter_result)
+    print("MAC address changed To :",mac_address_filter_result)
 else:
     print("MAC address is not changed!")
+print("-----------------------------------------------------------------------------------------")
 
 
 
