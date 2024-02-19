@@ -19,7 +19,8 @@ def get_Options():
 # Changing MAC Address 
 def change_Mac(interface,new_mac):
     print("\n[+] Changing MAC address :\t" + interface + "\tTo\u00A0\u00A0"+ new_mac + "\n" )
-    subprocess.run(["ifconfig",interface,"down"]) 
+    subprocess.run(["ifconfig",interface,"down"])  
+    
     subprocess.run(["ifconfig",interface,"hw","ether",new_mac]) 
     subprocess.run(["ifconfig",interface,"up"])
 
