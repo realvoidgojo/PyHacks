@@ -42,5 +42,38 @@ File "mac_changer.py", line 29, in get_mac_address
 ---
 ### Network Scanner
 
-This Program helps to discover devices in that network
+This Program helps to discover devices in your wifi network
+
+- Connect the Target Wifi Network with your devices , then cmd
+`ifconfig` and get the ip address (inet) eg: `192.168.1.10`
+
+```py
+python3 network_scanner  --range 192.168.1.1/24
+```
+This Program , Sends packets to `192.168.1.1` to `192.168.1.254`
+Print the discovered Devices ip_address and MAC_address in that target network
+
+[FAQs] if get `ImportError: No module named scapy.all` , then install scapy module 
+```
+pip install scapy
+```
+```
+Usage: network_scanner.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -r RANGE, --range=RANGE
+                        Use -r or --range to Scan Your Wifi Network
+```
+
+Network Scanning Using ARP
+
+ARP Protocol is a protocol for mapping IP address to a physical machine that is recognised in the local network
+
+ARP Illustration
+- If A , B , C , D , ROUTER  is a network `192.168.43.1/24`
+- A is Our machine , which says who has --range `192.168.43.1/24` IP this is ARP request , sends to devices in that network
+- C Responds for that request as ARP Response  , like I have `192.168.43.7`  and My MAC address  : `00:11:22:33:44:45` for every other packet also
+
+---
 

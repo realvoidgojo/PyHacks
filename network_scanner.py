@@ -4,7 +4,7 @@ import optparse
 # Implementing CLI Parsing
 def get_arguments():
     parser = optparse.OptionParser()
-    parser.add_option("-r" , "--range" , dest="range" , help="Use -r to Scan Your Wifi Network")
+    parser.add_option("-r" , "--range" , dest="range" , help="Use -r or --range to Scan Your Wifi Network")
 
     options = parser.parse_args()[0]
     
@@ -14,6 +14,8 @@ def get_arguments():
     else:
         return options
 
+
+# Discovring Devices in Wifi Network
 def scan(ip):
     arp_request = scapy.ARP(pdst = ip)
     src_dest = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
@@ -27,11 +29,13 @@ def scan(ip):
 
     return result_list
 
-
+# Displaying Answered Packets with details
 def print_result(result_list):
     print("IP \t\t\t MAC ADDRESS \n-------------------------------------------")
     for result in result_list:
         print(result["ip"] + "\t\t" + result["mac"])
+
+
 options = get_arguments()
 result_dict = scan(options.range)
 print_result(result_dict)
