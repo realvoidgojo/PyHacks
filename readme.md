@@ -40,7 +40,7 @@ File "mac_changer.py", line 29, in get_mac_address
 
 ```
 ---
+### Network Scanner
 
-
-
+This Program helps to discover devices in that network
 
