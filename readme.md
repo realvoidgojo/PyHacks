@@ -90,6 +90,7 @@ Note Mac Address of Router `arp -a` , Mac Address of Router was changed to Mac a
 
 **To run the script**
 ```
+Enable IP Forwarding by run this cmd `echo 1 /proc/sys/net/ipv4/ip_forward`
 shell > python3 arp_spoofer.py --help
 python3 arp_spoofer.py --help
 Usage: arp_spoofer.py [options]
