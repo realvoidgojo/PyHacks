@@ -79,7 +79,7 @@ ARP Illustration
 ### ARP Spoofer
 It's a type of attack in which a macilious actor sends false ARP message over a local network
 
-##### Pre Exisitng Spoofying 
+##### Pre Exisitng ARP Spoofing Script,
 Let ARP Spoofing Using `arpspoof` from `dsniff` tool
 First Scan The Local Network and discover Devices over that network , get target machine and router ip address
 Let assume Target be a windows machine, 
