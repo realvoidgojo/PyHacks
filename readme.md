@@ -76,4 +76,22 @@ ARP Illustration
 - C Responds for that request as ARP Response  , like I have `192.168.43.7`  and My MAC address  : `00:11:22:33:44:45` for every other packet also
 
 ---
+### ARP Spoofer
+It's a type of attack in which a macilious actor sends false ARP message over a local network
 
+Let ARP Spoofing Using `arpspoof` from `dsniff` tool
+
+First Scan The Local Network and discover Devices over that network , get target machine and router ip address
+
+Let assume Target be a windows machine, 
+In cmd prompt , note mac address of router using `arp -a` cmd 
+
+Open 2 Terminal  , this required root privilege 
+
+`arpspoof -i wlan0 -t 192.168.0.143 192.168.0.1`
+`arpspoof -i wlano0 -t 192.168.0.1 192.168.0.143`
+
+
+Note Mac Address of Router `arp -a` , Mac Address of Router was changed to Mac address of our machine.
+
+---
