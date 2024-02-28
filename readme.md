@@ -103,7 +103,7 @@ Options:
   -s Spoof Machine IP , --spoof=SPOOF_IP
                         Used to select Spoof Machine IP Address (Router)
 ````
-
+Spoofing Machine is Network Router Scan the network using `network_scanner.py` , find ip address , always router ip_address will be `XXX.XXX.X.1` it starts with 1
 ```py
 python3 arp_spoofer.py -t 192.168.0.14 --s 192.168.0.1
 ``` 
