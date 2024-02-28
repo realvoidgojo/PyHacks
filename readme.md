@@ -102,9 +102,9 @@ Usage: arp_spoofer.py [options]
 
 Options:
   -h, --help            show this help message and exit
-  -t Target Machine IP , --target=TARGET
+  -t Target Machine IP , --target=TARGET_IP
                         Used to select Target MAchine IP Address 
-  -s Spoof Machine IP , --spoof=SPOOF
+  -s Spoof Machine IP , --spoof=SPOOF_IP
                         Used to select Spoof Machine IP Address (Router)
 
 ````
