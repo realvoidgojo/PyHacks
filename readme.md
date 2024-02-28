@@ -88,7 +88,7 @@ arpspoof -i wlano0 -t 192.168.0.1 192.168.0.143
 
 Note Mac Address of Router `arp -a` , Mac Address of Router was changed to Mac address of our machine.
 
-Enable IP Forwarding by run this cmd `echo 1 /proc/sys/net/ipv4/ip_forward`
+Enable IP Forwarding by run this cmd `echo 1 > /proc/sys/net/ipv4/ip_forward` before running the script , everytime
 **To run the script**
 ```
 shell > python3 arp_spoofer.py --help
