@@ -5,8 +5,8 @@ import time
 # Getting Arguments in CLI 
 def get_Options():
     parser = OptionParser()
-    parser.add_option("-t" , "--target" , dest="target_ip" , help="Used to select Target")
-    parser.add_option("-s" , "--spoof" , dest= "spoof_ip" , help="Used to select Spoof")
+    parser.add_option("-t" , "--target" , dest="target_ip" , help=" Used to select Target Machine IP Address ")
+    parser.add_option("-s" , "--spoof" , dest= "spoof_ip" , help=" Used to select Spoof Machine IP Address ")
     ( options , arguments )  = parser.parse_args()
     
     # Excecption Handling for args
