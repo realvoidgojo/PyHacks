@@ -6,13 +6,9 @@ This PyHacks repository contains more networking and hacking related python scri
 1. mac_changer.py
 
 this programs helps to change your MAC address (MEDIA ACCESS CONTROL) for your devices using python in ` linux [only]`
-
 `prerequisites : python3`
-
 get interface name for the devices using `ifconfig`
-
 run this py script as root user , use this cmd  to get root privilege ` sudo su ` and specify interface and new mac address
-
 `python3 mac_changer --interface wlan1 --mac 11:22:33:44:55:66`
 
 ```
