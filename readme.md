@@ -3,8 +3,7 @@
 This PyHacks repository contains more networking and hacking related python scripts for linux system
 
 ---
-1. mac_changer.py
-
+1. `mac_changer.py`
 this programs helps to change your MAC address (MEDIA ACCESS CONTROL) for your devices using python in ` linux [only]`
 
 - `prerequisites : python3`
@@ -38,7 +37,7 @@ File "mac_changer.py", line 29, in get_mac_address
 ```
 ---
 ### Network Scanner
-
+2.`network_scanner.py`
 This Program helps to discover devices in your wifi network
 
 - Connect the Target Wifi Network with your devices , then cmd
