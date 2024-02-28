@@ -47,7 +47,7 @@ try:
     while True:
         """ Sending Packets from Target Machine to Spoofing Machine (Router) , manupulate our machine MAC to Target """ 
         send_packet(target_ip , spoof_ip)
-         """ Sending Packets from Spoofing Machine  to Target Machine , manupulate our machine MAC to spoof Machine (Router) """ 
+        """ Sending Packets from Spoofing Machine  to Target Machine , manupulate our machine MAC to spoof Machine (Router) """ 
         send_packet(spoof_ip , target_ip)
         send_packet_value += 2
         print("\r Packet Sended: "+ str(send_packet_value) ,end='')

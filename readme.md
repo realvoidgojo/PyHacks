@@ -96,10 +96,11 @@ Usage: arp_spoofer.py [options]
 
 Options:
   -h, --help            show this help message and exit
-  -t TARGET_IP , --target=TARGET_IP
-                        Used to select Target Machine IP Address 
-  -s SPOOF_IP , --spoof=SPOOF_IP
-                        Used to select Spoof Machine IP Address (Router)
+  -t TARGET_IP, --target=TARGET_IP
+                         Used to select Target Machine IP Address
+  -s SPOOF_IP, --spoof=SPOOF_IP
+                         Used to select Spoof Machine IP Address
+
 ````
 
 Spoofing Machine is Network Router Scan the network using `network_scanner.py` , find ip address , always router ip_address will be `XXX.XXX.X.1` it starts with 1
