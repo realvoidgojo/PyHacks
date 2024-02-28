@@ -94,4 +94,19 @@ Open 2 Terminal  , this required root privilege
 
 Note Mac Address of Router `arp -a` , Mac Address of Router was changed to Mac address of our machine.
 
+```
+shell > python3 arp_spoofer.py --help
+
+python3 arp_spoofer.py --help
+Usage: arp_spoofer.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -t Target Machine IP , --target=TARGET
+                        Used to select Target MAchine IP Address 
+  -s Spoof Machine IP , --spoof=SPOOF
+                        Used to select Spoof Machine IP Address (Router)
+
+````
+
 ---
