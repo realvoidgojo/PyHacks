@@ -77,7 +77,7 @@ It's a type of attack in which a macilious actor sends false ARP message over a 
 
 ##### Pre Exisitng ARP Spoofing Script,
 Let ARP Spoofing Using `arpspoof` from `dsniff` tool
-- First Scan The Local Network and discover Devices over that network , get target machine and router ip address
+- First Scan The Local Network and discover Devices over that network , get target machine ip address and router ip address
 - Let assume Target be a windows machine , In cmd prompt , note mac address of router using `arp -a` cmd 
 - Open 2 Terminal  , this required root privilege 
 ```
