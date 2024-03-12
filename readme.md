@@ -112,6 +112,8 @@ python3 arp_spoofer.py -t 192.168.0.14 --s 192.168.0.1
 ### ARP Sniffer
 
 run `ifconfig` to note your wireless adapter name and connet to target network
+Enable IP Forwarding by run this cmd `echo 1 > /proc/sys/net/ipv4/ip_forward` before running the script , everytime
+
 ```
 python3 arp_sniffer -i wlan_name
 ```
