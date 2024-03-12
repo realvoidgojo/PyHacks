@@ -5,7 +5,7 @@ from scapy.layers import http
 # Getting CLI 
 def get_options():
     optparse = OptionParser()
-    optparse.add( "-i" , "--interface" , dest = interface , help="Used to specify wireless adapter interface ! Use --help or -h get more info"
+    optparse.add( "-i" , "--interface" , dest = interface , help="Used to specify wireless adapter interface !."
     if not optparse.interface:
         parse.error("Please specify the interface !")
     else:
