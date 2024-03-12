@@ -105,9 +105,30 @@ Options:
 ````
 
 Spoofing Machine is Network Router Scan the network using `network_scanner.py` , find ip address , always router ip_address will be `XXX.XXX.X.1` it starts with 1
-```py
+```
 python3 arp_spoofer.py -t 192.168.0.14 --s 192.168.0.1
 ``` 
 ---
 ### ARP Sniffer
+
+run `ifconfig` to note your wireless adapter name and connet to target network
+```
+python3 arp_sniffer -i wlan_name
+```
+This program used to be your device inbetween the router and target devices ,and then breakdown the packet into raw data, get credentils of the target.
+**To run the script**
+```
+python3 arp_sniffer.py --help
+Usage: arp_spoofer.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -i INTERFACE, --target=INTERFACE
+                         Used to specify wireless adapter interface !.
+```
+
+  
+
+
+
 
