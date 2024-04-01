@@ -1,8 +1,9 @@
-## PyHacks
+# PyHacks
 
-This PyHacks repository contains more networking and hacking related python scripts for linux system
+This PyHacks repository contains more networking related python scripts for linux system 
 
----
+##  Network Tools
+
 1. `mac_changer.py`
 this programs helps to change your MAC address (MEDIA ACCESS CONTROL) for your devices using python in ` linux [only]`
 
@@ -102,7 +103,7 @@ Options:
   -s SPOOF_IP, --spoof=SPOOF_IP
                          Used to select Spoof Machine IP Address
 
-````
+```
 
 Spoofing Machine is Network Router Scan the network using `network_scanner.py` , find ip address , always router ip_address will be `XXX.XXX.X.1` it starts with 1
 ```
@@ -112,8 +113,9 @@ python3 arp_spoofer.py -t 192.168.0.14 --s 192.168.0.1
 ### ARP Sniffer
 
 run `ifconfig` to note your wireless adapter name and connet to target network
-Enable IP Forwarding by run this cmd `echo 1 > /proc/sys/net/ipv4/ip_forward` before running the script , everytime
-run spoofying script
+Enable IP Forwarding by run this cmd `echo 1 > /proc/sys/net/ipv4/ip_forward` before running the script , for everytime to run this spoofying script <br>
+
+**To run the script** first spoofy ,then sniff those data as a MITM
 ```
 python3 arp_spoofer.py -t 192.168.0.14 --s 192.168.0.1
 ```
@@ -121,16 +123,34 @@ python3 arp_spoofer.py -t 192.168.0.14 --s 192.168.0.1
 python3 arp_sniffer -i wlan_name
 ```
 This program used to be your device inbetween the router and target devices ,and then breakdown the packet into raw data, get credentils of the target.
-**To run the script**
+
+
 ```
-python3 arp_sniffer.py --help
+python3 arp_spoofer.py --help
 Usage: arp_spoofer.py [options]
 
 Options:
   -h, --help            show this help message and exit
-  -i INTERFACE, --target=INTERFACE
-                         Used to specify wireless adapter interface !.
+  -t TARGET_IP, --target=TARGET_IP
+                         Used to select Target Machine IP Address
+  -s SPOOF_IP, --spoof=SPOOF_IP
+                         Used to select Spoof Machine IP Address
+
 ```
+```
+python3 arp_sniffer.py --help
+Usage: arp_sniffer.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -i INTERFACE, --interface=INTERFACE
+                        Used to specify wireless adapter interface !
+```
+---
+##  Backdoor Tools
+
+
+
 
   
 

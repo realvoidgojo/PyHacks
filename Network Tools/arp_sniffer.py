@@ -5,11 +5,13 @@ from scapy.layers import http
 # Getting CLI 
 def get_options():
     optparse = OptionParser()
-    optparse.add( "-i" , "--interface" , dest = interface , help="Used to specify wireless adapter interface !."
-    if not optparse.interface:
-        parse.error("Please specify the interface !")
+    optparse.add_option( "-i" , "--interface" , dest = "interface" , help="Used to specify wireless adapter interface !")
+    options  = optparse.parse_args()[0]
+    if not options.interface:
+        optparse.error("Please specify the interface !")
     else:
         return optparse.interface
+    
 # Getting Sniffing Packets
 def sniff(interface):
     scapy.sniff(iface=interface, store=False , prn=print_sniffed_packets ) 
@@ -34,5 +36,5 @@ def print_sniffed_packets(packet):
         if cred:
             print("cred >>> ",cred)
 
-interface = get_options
+interface = get_options()
 sniff(interface)
