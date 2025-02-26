@@ -2,158 +2,82 @@
 
 This PyHacks repository contains more networking related python scripts for linux system 
 
-##  Network Tools
+# Network Tools
+A collection of Python scripts for various network tasks, including MAC address changing, network scanning, ARP spoofing, and ARP sniffing.
 
-1. `mac_changer.py`
-this programs helps to change your MAC address (MEDIA ACCESS CONTROL) for your devices using python in ` linux [only]`
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tools](#tools)
+  - [MAC Changer](#mac-changer)
+  - [Network Scanner](#network-scanner)
+  - [ARP Spoofer](#arp-spoofer)
+  - [ARP Sniffer](#arp-sniffer)
+- [FAQs](#faqs)
+- [Contributing](#contributing)
 
-- `prerequisites : python3`
-- get interface name for the devices using `ifconfig`
-- run this py script as root user , use this cmd  to get root privilege ` sudo su ` and specify interface and new mac address
-`python3 mac_changer --interface wlan1 --mac 11:22:33:44:55:66`
+## Introduction
+This repository provides a set of command-line tools for network manipulation and analysis. It includes tools for changing MAC addresses, scanning networks, spoofing ARP packets, and sniffing ARP traffic.
 
+## Features
+- Modular design for easy maintenance and extension.
+- Command-line interface for easy usage.
+- Supports multiple network tasks.
+
+## Requirements
+- Python 3.x
+- Scapy library (`pip install scapy`)
+
+## Installation
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/network-tools.git
+   ```
+2. Install required packages:
+   ```
+   pip install scapy
+   ```
+
+## Usage
+Run the tool using the following command:
 ```
-shell > python3 mac_changer.py --help
-
-python3 mac_changer --help
-Usage: mac_changer.py [options]
-
-Options:
-  -h, --help            show this help message and exit
-  -i INTERFACE, --interface=INTERFACE
-                        Used to select Interface for changing MAC address
-  -m NEW_MAC, --mac=NEW_MAC
-                        Used to select New MAC addresss
-
-````
-this scripts just run linux cmds in background for changing current mac address so this script works only on linux
-
-[FAQ]
- if use python2 to run this script `subprocess.check_output()` and `subprocess.run()`is not defined in python2 , then install python3 `sudo apt install python3`
- subprocess.call() has been changed to subprocess.run() in python3
- ```
-File "mac_changer.py", line 29, in get_mac_address
-    ifconfig_result =  str(subprocess.check_output(["ifconfig",options.interface]),'ascii')
-
+python3 cli.py --help
 ```
----
+This will display the help menu for available commands.
+
+## Tools
+
+### MAC Changer
+Changes the MAC address of a network interface.
+```
+python3 cli.py mac_changer -i wlan0 -m 11:22:33:44:55:66
+```
+
 ### Network Scanner
-2.`network_scanner.py`
-This Program helps to discover devices in your wifi network
-
-- Connect the Target Wifi Network with your devices , then cmd
-`ifconfig` and get the ip address (inet) eg: `192.168.1.10`
-
-```py
-python3 network_scanner  --range 192.168.1.1/24
+Scans a network to discover devices.
 ```
-This Program , Sends packets to `192.168.1.1` to `192.168.1.254`
-Print the discovered Devices ip_address and MAC_address in that target network
-
-[FAQs] if get `ImportError: No module named scapy.all` , then install scapy module 
-```
-pip install scapy
-```
-```
-Usage: network_scanner.py [options]
-
-Options:
-  -h, --help            show this help message and exit
-  -r RANGE, --range=RANGE
-                        Use -r or --range to Scan Your Wifi Network
+python3 cli.py network_scanner -r 192.168.1.1/24
 ```
 
-Network Scanning Using ARP
-
-ARP Protocol is a protocol for mapping IP address to a physical machine that is recognised in the local network
-
-ARP Illustration
-- If A , B , C , D , ROUTER  is a network `192.168.43.1/24`
-- A is Our machine , which says who has --range `192.168.43.1/24` IP this is ARP request , sends to devices in that network
-- C Responds for that request as ARP Response  , like I have `192.168.43.7`  and My MAC address  : `00:11:22:33:44:45` for every other packet also
-
----
 ### ARP Spoofer
-It's a type of attack in which a macilious actor sends false ARP message over a local network
-
-##### Pre Exisitng ARP Spoofing Script,
-Let ARP Spoofing Using `arpspoof` from `dsniff` tool
-- First Scan The Local Network and discover Devices over that network , get target machine ip address and router ip address
-- Let assume Target be a windows machine , In cmd prompt , note mac address of router using `arp -a` cmd 
-- Open 2 Terminal  , this required root privilege 
+Spoofs ARP packets to manipulate network traffic.
 ```
-arpspoof -i wlan0 -t 192.168.0.143 192.168.0.1
-arpspoof -i wlano0 -t 192.168.0.1 192.168.0.143
+python3 cli.py arp_spoofer -t 192.168.1.100 -s 192.168.1.1
 ```
 
-
-Note Mac Address of Router `arp -a` , Mac Address of Router was changed to Mac address of our machine.
-
-Enable IP Forwarding by run this cmd `echo 1 > /proc/sys/net/ipv4/ip_forward` before running the script , everytime
-**To run the script**
-```
-shell > python3 arp_spoofer.py --help
-python3 arp_spoofer.py --help
-Usage: arp_spoofer.py [options]
-
-Options:
-  -h, --help            show this help message and exit
-  -t TARGET_IP, --target=TARGET_IP
-                         Used to select Target Machine IP Address
-  -s SPOOF_IP, --spoof=SPOOF_IP
-                         Used to select Spoof Machine IP Address
-
-```
-
-Spoofing Machine is Network Router Scan the network using `network_scanner.py` , find ip address , always router ip_address will be `XXX.XXX.X.1` it starts with 1
-```
-python3 arp_spoofer.py -t 192.168.0.14 --s 192.168.0.1
-``` 
----
 ### ARP Sniffer
-
-run `ifconfig` to note your wireless adapter name and connet to target network
-Enable IP Forwarding by run this cmd `echo 1 > /proc/sys/net/ipv4/ip_forward` before running the script , for everytime to run this spoofying script <br>
-
-**To run the script** first spoofy ,then sniff those data as a MITM
+Sniffs ARP packets to monitor network activity.
 ```
-python3 arp_spoofer.py -t 192.168.0.14 --s 192.168.0.1
+python3 cli.py arp_sniffer -i wlan0
 ```
-```
-python3 arp_sniffer -i wlan_name
-```
-This program used to be your device inbetween the router and target devices ,and then breakdown the packet into raw data, get credentils of the target.
 
+## FAQs
+- **Python Version**: Ensure you're using Python 3.
+- **Scapy Installation**: Install Scapy using `pip install scapy`.
+- **Root Privileges**: Some operations require root access.
 
-```
-python3 arp_spoofer.py --help
-Usage: arp_spoofer.py [options]
-
-Options:
-  -h, --help            show this help message and exit
-  -t TARGET_IP, --target=TARGET_IP
-                         Used to select Target Machine IP Address
-  -s SPOOF_IP, --spoof=SPOOF_IP
-                         Used to select Spoof Machine IP Address
-
-```
-```
-python3 arp_sniffer.py --help
-Usage: arp_sniffer.py [options]
-
-Options:
-  -h, --help            show this help message and exit
-  -i INTERFACE, --interface=INTERFACE
-                        Used to specify wireless adapter interface !
-```
----
-##  Backdoor Tools
-
-
-
-
-  
-
-
-
-
+## Contributing
+Contributions are welcome! Please submit pull requests with detailed explanations of changes.
